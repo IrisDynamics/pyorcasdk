@@ -8,6 +8,13 @@ project(
   DESCRIPTION "C++ bindings for Iris Dynamics orcaSDK"
   LANGUAGES CXX)
 
+# if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+#     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+#     add_compile_options(-fPIC)
+# endif()
+
+
+
 set(CMAKE_CXX_STANDARD 14)
 
 include(FetchContent)
@@ -23,6 +30,7 @@ FetchContent_MakeAvailable(orcaSDK)
 add_subdirectory(extern/pybind11 pybind11)
 
 pybind11_add_module(_pyOrcaSDK
+    SHARED
     bindings/pyOrcaSDK.cpp
 )
 
