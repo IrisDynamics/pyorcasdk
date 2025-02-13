@@ -1,0 +1,32 @@
+[build-system]
+requires = ["scikit-build-core", "pybind11"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "pyOrcaSDK"
+version = "0.0.3"
+readme = "README.md"
+description = "pyOrcaSDK ported from the C++ orcaSDK library"
+authors = [
+    {name = "Jake Taranov", email = "jtaranov@irisdynamics.com"},
+]
+requires-python = ">=3.8"
+
+[tool.scikit-build]
+wheel.expand-macos-universal-tags = true
+cmake.build-type = "Debug"
+cmake.version = "CMakeLists.txt"
+sdist.include = ["pyActuator/*.pyi"]
+sdist.exclude = ["cleanup.py", "tests/"]
+
+# Windows-specific settings
+[tool.cibuildwheel.windows]
+archs = ["x86", "AMD64", "ARM64"]
+
+# Linux-specific settings
+[tool.cibuildwheel.linux]
+archs = ["x86_64", "i686", "aarch64"]
+
+# macOS-specific settings
+[tool.cibuildwheel.macos]
+archs = ["x86_64", "arm64"]
