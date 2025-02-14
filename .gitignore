@@ -4,7 +4,6 @@
 *.o
 *.so
 *.pyc
-*.pyi
 *.pyd
 *.pdb
 build
