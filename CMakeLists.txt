@@ -36,4 +36,9 @@ pybind11_add_module(_pyOrcaSDK
 
 target_link_libraries(_pyOrcaSDK PRIVATE orcaSDK::core)
 
+set_target_properties(_pyOrcaSDK PROPERTIES 
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pyOrcaSDK"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pyOrcaSDK"
+)
+
 install(TARGETS _pyOrcaSDK LIBRARY DESTINATION pyOrcaSDK)

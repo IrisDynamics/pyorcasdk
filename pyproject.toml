@@ -18,6 +18,10 @@ cmake.build-type = "Debug"
 cmake.version = "CMakeLists.txt"
 sdist.include = ["pyOrcaSDK/*.pyi"]
 sdist.exclude = ["cleanup.py", "tests/"]
+cmake.args = [
+    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=pyOrcaSDK",
+    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=pyOrcaSDK"
+]
 
 # Windows-specific settings
 [tool.cibuildwheel.windows]
