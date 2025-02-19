@@ -156,6 +156,6 @@ PYBIND11_MODULE(_pyOrcaSDK, m)
 
         .def("get_stream_data", [](orcaSDK::Actuator& actuator) { return actuator.stream_cache; })
 
-        .def_readonly("name", py::str(&orcaSDK::Actuator::name));
+        .def_readonly("name", &orcaSDK::Actuator::name);
 
 }
