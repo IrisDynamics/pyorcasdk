@@ -19,9 +19,15 @@ cmake.version = "CMakeLists.txt"
 sdist.include = ["pyOrcaSDK/*.pyi"]
 sdist.exclude = ["cleanup.py", "tests/"]
 cmake.args = [
-    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=pyOrcaSDK",
-    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=pyOrcaSDK"
+    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=${CMAKE_CURRENT_BINARY_DIR}/pyOrcaSDK",
+    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=${CMAKE_CURRENT_BINARY_DIR}/pyOrcaSDK",
+    "-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY=${CMAKE_CURRENT_BINARY_DIR}/pyOrcaSDK"
 ]
+
+
+[tool.cibuildwheel]
+build = "cp312-*"
+build-verbosity = 2
 
 # Windows-specific settings
 [tool.cibuildwheel.windows]

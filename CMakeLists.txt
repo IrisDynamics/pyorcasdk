@@ -9,15 +9,16 @@ project(
   LANGUAGES CXX)
 
 
-
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 include(FetchContent)
 
 FetchContent_Declare(
   orcaSDK
   GIT_REPOSITORY https://github.com/IrisDynamics/orcaSDK.git
-  GIT_TAG origin/linux-comport-path
+  GIT_TAG origin/check-serial-is-open-before-close
 )
 
 FetchContent_MakeAvailable(orcaSDK)
@@ -32,7 +33,7 @@ add_subdirectory(extern/pybind11 pybind11)
 pybind11_add_module(_pyOrcaSDK
     SHARED
     bindings/pyOrcaSDK.cpp
-)
+) 
 
 target_link_libraries(_pyOrcaSDK PRIVATE orcaSDK::core)
 

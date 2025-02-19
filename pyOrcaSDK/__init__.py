@@ -1,4 +1,4 @@
-from _pyOrcaSDK import *
+from ._pyOrcaSDK import *
 
 __all__ = [
     "Actuator",
