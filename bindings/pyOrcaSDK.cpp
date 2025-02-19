@@ -7,7 +7,6 @@ namespace py = pybind11;
 PYBIND11_MODULE(_pyOrcaSDK, m)
 {
     m.doc() = "Python binding for the C++ orcaSDK";
-
      py::class_<orcaSDK::StreamData>(m, "StreamData")
         .def_readwrite("position", &orcaSDK::StreamData::position)
         .def_readwrite("force", &orcaSDK::StreamData::force)
@@ -78,8 +77,8 @@ PYBIND11_MODULE(_pyOrcaSDK, m)
                 &orcaSDK::Actuator::open_serial_port
             ),
             py::arg("port_number"),
-            py::arg("baud_rate") = orcaSDK::ModbusClient::kDefaultBaudRate,
-            py::arg("interframe_delay") = orcaSDK::ModbusClient::kDefaultInterframeDelay_uS,
+            py::arg("baud_rate") = &orcaSDK::ModbusClient::kDefaultBaudRate,
+            py::arg("interframe_delay") = &orcaSDK::ModbusClient::kDefaultInterframeDelay_uS,
             "Open serial port using port number"
         )
         .def("open_serial_port",
@@ -88,8 +87,8 @@ PYBIND11_MODULE(_pyOrcaSDK, m)
                 &orcaSDK::Actuator::open_serial_port
             ),
             py::arg("port_path"),
-            py::arg("baud_rate") = orcaSDK::ModbusClient::kDefaultBaudRate,
-            py::arg("interframe_delay") = orcaSDK::ModbusClient::kDefaultInterframeDelay_uS,
+            py::arg("baud_rate") = &orcaSDK::ModbusClient::kDefaultBaudRate,
+            py::arg("interframe_delay") = &orcaSDK::ModbusClient::kDefaultInterframeDelay_uS,
             "Open serial port using port path"
         )
 
