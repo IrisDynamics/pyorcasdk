@@ -37,6 +37,12 @@ jobs:
       - name: Update submodules (if needed)
         run: git submodule update --init --recursive
 
+      - name: Set up QEMU
+        if: runner.os == 'Linux'
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: all
+          
       # Used to host cibuildwheel
       - uses: actions/setup-python@v5
 
