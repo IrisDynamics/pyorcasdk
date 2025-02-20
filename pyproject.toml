@@ -22,6 +22,7 @@ wheel.expand-macos-universal-tags = true
 cmake.build-type = "Release"
 cmake.version = "CMakeLists.txt"
 sdist.include = ["pyOrcaSDK/*.pyi"]
-sdist.exclude = ["cleanup.py", "tests/"]
+sdist.exclude = ["pyOrcaSDK/__pycache__", "tests/", "cleanup.py"]
+wheel.exclude = ["pyOrcaSDK/__pycache__"]
 wheel.packages = ["pyOrcaSDK"]
 

@@ -18,7 +18,7 @@ include(FetchContent)
 FetchContent_Declare(
   orcaSDK
   GIT_REPOSITORY https://github.com/IrisDynamics/orcaSDK.git
-  GIT_TAG origin/check-serial-is-open-before-close
+  GIT_TAG 25cb0ae50c83e2c17b5396f5a069129b73fa7a2b
 )
 
 FetchContent_MakeAvailable(orcaSDK)
