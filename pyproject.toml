@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "pyOrcaSDK"
-version = "0.0.3"
+version = "1.0.0a1"
 readme = "README.md"
 description = "pyOrcaSDK ported from the C++ orcaSDK library"
 authors = [
