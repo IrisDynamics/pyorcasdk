@@ -9,6 +9,8 @@ project(
   LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 include(FetchContent)
 
@@ -20,12 +22,23 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(orcaSDK)
 
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    add_compile_options(-fPIC)
+    set_target_properties(orcaSDK_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
+endif()
+
 add_subdirectory(extern/pybind11 pybind11)
 
 pybind11_add_module(_pyOrcaSDK
+    SHARED
     bindings/pyOrcaSDK.cpp
-)
+) 
 
 target_link_libraries(_pyOrcaSDK PRIVATE orcaSDK::core)
 
-install(TARGETS _pyOrcaSDK LIBRARY DESTINATION pyOrcaSDK)
+set_target_properties(_pyOrcaSDK PROPERTIES 
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pyOrcaSDK"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pyOrcaSDK"
+)
+
+install(TARGETS _pyOrcaSDK DESTINATION ${SKBUILD_PROJECT_NAME})
