@@ -1,5 +1,9 @@
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
+#include <pybind11/complex.h>
+#include <pybind11/chrono.h>
+#include <pybind11/functional.h>
 #include "actuator.h"
 
 namespace py = pybind11;
@@ -78,8 +82,8 @@ PYBIND11_MODULE(_pyOrcaSDK, m)
                 &orcaSDK::Actuator::open_serial_port
             ),
             py::arg("port_number"),
-            py::arg("baud_rate") = orcaSDK::ModbusClient::kDefaultBaudRate,
-            py::arg("interframe_delay") = orcaSDK::ModbusClient::kDefaultInterframeDelay_uS,
+            py::arg("baud_rate") = orcaSDK::Constants::kDefaultBaudRate,
+            py::arg("interframe_delay") = orcaSDK::Constants::kDefaultInterframeDelay_uS,
             "Open serial port using port number"
         )
         .def("open_serial_port",
@@ -88,8 +92,8 @@ PYBIND11_MODULE(_pyOrcaSDK, m)
                 &orcaSDK::Actuator::open_serial_port
             ),
             py::arg("port_path"),
-            py::arg("baud_rate") = orcaSDK::ModbusClient::kDefaultBaudRate,
-            py::arg("interframe_delay") = orcaSDK::ModbusClient::kDefaultInterframeDelay_uS,
+            py::arg("baud_rate") = orcaSDK::Constants::kDefaultBaudRate,
+            py::arg("interframe_delay") = orcaSDK::Constants::kDefaultInterframeDelay_uS,
             "Open serial port using port path"
         )
 
