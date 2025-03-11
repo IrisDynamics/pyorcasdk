@@ -29,16 +29,16 @@ endif()
 
 add_subdirectory(extern/pybind11 pybind11)
 
-pybind11_add_module(_pyOrcaSDK
+pybind11_add_module(_pyorcasdk
     SHARED
-    bindings/pyOrcaSDK.cpp
+    bindings/pyorcasdk.cpp
 ) 
 
-target_link_libraries(_pyOrcaSDK PRIVATE orcaSDK::core)
+target_link_libraries(_pyorcasdk PRIVATE orcaSDK::core)
 
-set_target_properties(_pyOrcaSDK PROPERTIES 
-    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pyOrcaSDK"
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/pyOrcaSDK"
+set_target_properties(_pyorcasdk PROPERTIES 
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/_pyorcasdk"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/_pyorcasdk"
 )
 
-install(TARGETS _pyOrcaSDK DESTINATION ${SKBUILD_PROJECT_NAME})
+install(TARGETS _pyorcasdk DESTINATION ${SKBUILD_PROJECT_NAME})

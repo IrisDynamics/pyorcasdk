@@ -8,7 +8,7 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(_pyOrcaSDK, m)
+PYBIND11_MODULE(_pyorcasdk, m)
 {
     m.doc() = "Python binding for the C++ orcaSDK";
 

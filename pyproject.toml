@@ -3,11 +3,11 @@ requires = ["scikit-build-core", "pybind11"]
 build-backend = "scikit_build_core.build"
 
 [project]
-name = "pyOrcaSDK"
+name = "pyorcasdk"
 version = "1.0.0a1"
 readme = "README.md"
 license = {file = 'LICENSE'}
-description = "pyOrcaSDK ported from the C++ orcaSDK library"
+description = "pyorcasdk ported from the C++ orcaSDK library"
 authors = [
     {name = "Jake Taranov", email = "jtaranov@irisdynamics.com"},
 ]
