@@ -28,6 +28,31 @@ PYBIND11_MODULE(_pyorcasdk, m)
         .value("KinematicMode", orcaSDK::KinematicMode)
         .export_values();  // This allows access to the enum values in Python
 
+        
+     py::enum_<orcaSDK::Actuator::HapticEffect>(m, "HapticEffect")
+          .value("ConstF", orcaSDK::Actuator::HapticEffect::ConstF)
+          .value("Spring0", orcaSDK::Actuator::HapticEffect::Spring0)
+          .value("Spring1", orcaSDK::Actuator::HapticEffect::Spring1)
+          .value("Spring2", orcaSDK::Actuator::HapticEffect::Spring2)
+          .value("Damper", orcaSDK::Actuator::HapticEffect::Damper)
+          .value("Inertia", orcaSDK::Actuator::HapticEffect::Inertia)
+          .value("Osc0", orcaSDK::Actuator::HapticEffect::Osc0)
+          .value("Osc1", orcaSDK::Actuator::HapticEffect::Osc1)
+          .export_values(); // Makes the values accessible directly under HapticEffect
+
+     py::enum_<orcaSDK::Actuator::SpringCoupling>(m, "SpringCoupling")
+          .value("both", orcaSDK::Actuator::SpringCoupling::both)
+          .value("positive", orcaSDK::Actuator::SpringCoupling::positive)
+          .value("negative ", orcaSDK::Actuator::SpringCoupling::negative)
+          .export_values(); // Makes the values accessible directly under HapticEffect
+
+     py::enum_<orcaSDK::Actuator::OscillatorType>(m, "OscillatorType")
+          .value("Pulse", orcaSDK::Actuator::OscillatorType::Pulse)
+          .value("Sine", orcaSDK::Actuator::OscillatorType::Sine)
+          .value("Triangle ", orcaSDK::Actuator::OscillatorType::Triangle)
+          .value("Saw  ", orcaSDK::Actuator::OscillatorType::Saw)
+          .export_values(); // Makes the values accessible directly under HapticEffect
+
      py::class_<orcaSDK::OrcaError>(m, "OrcaError")
           .def(py::init<int, std::string>(), py::arg("failure_type"), py::arg("error_message") = "")
           .def("__bool__", &orcaSDK::OrcaError::operator bool)
@@ -157,8 +182,52 @@ PYBIND11_MODULE(_pyorcasdk, m)
         .def("get_temperature_C", &orcaSDK::Actuator::get_temperature_C)
 
         .def("get_voltage_mV", &orcaSDK::Actuator::get_voltage_mV)
+        
+        .def("zero_position", &orcaSDK::Actuator::zero_position)
+
+        .def("get_latched_errors", &orcaSDK::Actuator::get_latched_errors)
+
+        .def("time_since_last_response_microseconds", &orcaSDK::Actuator::time_since_last_response_microseconds)
 
         .def("get_stream_data", [](orcaSDK::Actuator& actuator) { return actuator.stream_cache; })
+
+        .def("set_max_force", &orcaSDK::Actuator::set_max_force, py::arg("max_force"))
+
+        .def("set_max_temp", &orcaSDK::Actuator::set_max_temp, py::arg("max_temp"))
+
+        .def("set_max_power", &orcaSDK::Actuator::set_max_power, py::arg("set_max_power"))
+        
+        .def("set_pctrl_tune_softstart", &orcaSDK::Actuator::set_pctrl_tune_softstart, py::arg("t_in_ms"))
+
+        .def("set_safety_damping", &orcaSDK::Actuator::set_safety_damping, py::arg("max_safety_damping"))
+
+        .def("tune_position_controller", &orcaSDK::Actuator::tune_position_controller, py::arg("pgain"), py::arg("igain"), py::arg("dvgain"), py::arg("sat"), py::arg("dgain") = 0)
+        
+        .def("set_kinematic_motion", &orcaSDK::Actuator::set_kinematic_motion, py::arg("id"), py::arg("position"), py::arg("time"), py::arg("delay"), py::arg("type"), py::arg("auto_next"), py::arg("next_id") = -1)
+
+        .def("trigger_kinematic_motion", &orcaSDK::Actuator::trigger_kinematic_motion, py::arg("id"))
+
+        .def("enable_haptic_effects", &orcaSDK::Actuator::enable_haptic_effects, py::arg("effects"))
+
+        .def("set_spring_effect", &orcaSDK::Actuator::set_spring_effect, py::arg("spring_id"), py::arg("gain"), py::arg("center"), py::arg("dead_zone") = 0, py::arg("saturation ") = 0, py::arg("coupling") = orcaSDK::Actuator::SpringCoupling::both)
+
+        .def("set_osc_effect", &orcaSDK::Actuator::set_osc_effect, py::arg("osc_id"), py::arg("amplitude"), py::arg("frequency_dhz"), py::arg("duty") = 0, py::arg("type "))
+
+        .def("set_damper", &orcaSDK::Actuator::set_damper, py::arg("damping"))
+
+        .def("set_inertia", &orcaSDK::Actuator::set_inertia, py::arg("inertia"))
+
+        .def("set_constant_force", &orcaSDK::Actuator::set_constant_force, py::arg("force"))
+
+        .def("set_constant_force_filter", &orcaSDK::Actuator::set_constant_force_filter, py::arg("force_filter"))
+
+        .def("get_serial_number", &orcaSDK::Actuator::get_serial_number)
+
+        .def("get_major_version", &orcaSDK::Actuator::get_major_version)
+
+        .def("get_release_state", &orcaSDK::Actuator::get_release_state)
+
+        .def("get_revision_number", &orcaSDK::Actuator::get_revision_number)
 
         .def_readonly("name", &orcaSDK::Actuator::name);
 
