@@ -29,7 +29,7 @@ PYBIND11_MODULE(_pyorcasdk, m)
         .export_values();  // This allows access to the enum values in Python
 
         
-     py::enum_<orcaSDK::Actuator::HapticEffect>(m, "HapticEffect")
+     py::enum_<orcaSDK::Actuator::HapticEffect>(m, "HapticEffect", py::arithmetic())
           .value("ConstF", orcaSDK::Actuator::HapticEffect::ConstF)
           .value("Spring0", orcaSDK::Actuator::HapticEffect::Spring0)
           .value("Spring1", orcaSDK::Actuator::HapticEffect::Spring1)
