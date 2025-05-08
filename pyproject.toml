@@ -7,9 +7,9 @@ name = "pyorcasdk"
 version = "1.0.0a1"
 readme = "README.md"
 license = {file = 'LICENSE'}
-description = "pyorcasdk ported from the C++ orcaSDK library"
+description = "Python bindings for the C++ orcaSDK library"
 authors = [
-    {name = "Jake Taranov", email = "jtaranov@irisdynamics.com"},
+    {name = "Iris Dynamics Ltd.", email = "support@irisdynamics.com"}
 ]
 requires-python = ">=3.8"
 
