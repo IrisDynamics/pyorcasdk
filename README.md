@@ -2,7 +2,7 @@
 
 ## Introduction
 
-pyorcasdk is a Python package designed to allow for easy software interaction with ORCA Series linear motors. The package is created using C++ bindings on our C++ library, [orcaSDK](https://github.com/IrisDynamics/orcaSDK).
+pyorcasdk is a Python package designed to allow for easy software interaction with ORCA Series linear motors. The package is created using Python bindings on our C++ library, [orcaSDK](https://github.com/IrisDynamics/orcaSDK).
 
 ## Prerequisites
 
@@ -32,4 +32,4 @@ Our [downloads page](https://irisdynamics.com/downloads) contains multiple files
 
 ### orcaSDK Documentation
 
-Although it uses C++ syntax, there is [complete documentation for orcaSDK](https://github.com/IrisDynamics/orcaSDK/releases/latest). Because this package is generated using C++ bindings, nearly all function names and types are identical across the two packages. The documentation for the C++ library might be useful if you need additional information.
+Although it uses C++ syntax, there is [complete documentation for orcaSDK](https://github.com/IrisDynamics/orcaSDK/releases/latest). Because this package links directly to our C++ library, nearly all function names and types are identical across the two packages. The documentation for the C++ library might be useful if you need additional information.
