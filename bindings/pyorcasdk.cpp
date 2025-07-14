@@ -10,7 +10,7 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(_pyorcasdk, m)
 {
-    m.doc() = "Python binding for the C++ orcaSDK";
+    m.doc() = "Python bindings for the C++ orcaSDK";
 
      py::class_<orcaSDK::StreamData>(m, "StreamData")
         .def_readwrite("position", &orcaSDK::StreamData::position)
