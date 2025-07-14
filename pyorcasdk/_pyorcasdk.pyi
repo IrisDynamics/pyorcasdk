@@ -363,7 +363,7 @@ class Actuator:
             position (int): The position to start at, in micrometers.
             time (int): The duration of the motion, in milliseconds.
             delay (int): The delay following the motion, in milliseconds.
-            type (int): 0 = minimizes power, 1 = minimizes smoothness.
+            type (int): 0 = minimizes power, 1 = maximizes smoothness.
             auto_next (int): 0 = stop after the current motion executes, 1 = execute the next motion after the current one finishes.
             next_id (int): Represents the motion that should be completed next, if the previous variable is set to true.
 
@@ -487,7 +487,7 @@ class Actuator:
         ...
 
     def trigger_kinematic_motion(self, id: int) -> OrcaError:
-        """Triggers the start of a kinematic motion. This will also run on any chained motions.
+        """Triggers the start of a kinematic motion, if the motor is in Kinematic mode, including any chained motions.
 
         Args:
             id (int): The ID of the motion to be triggered.
