@@ -633,6 +633,7 @@ class MotorMode:
     Represents the operating mode of the motor.
 
     Members:
+      AutoZeroMode: Auto Zeroes motor, putting it into a routine that will retract the shaft until reaching a hard stop and set the zero position to that location.
       SleepMode: Force and position commands are ignored. Entering sleep mode will clear persistent errors. 
       ForceMode: Uses the force controller to achieve the commanded force.
       PositionMode: Calculates and applies force to reach positions based on the configured PID tuning, set point, and current shaft position.
@@ -640,14 +641,14 @@ class MotorMode:
       KinematicMode: Uses the kinematic controller to set position targets.
     """
 
+    AutoZeroMode: typing.ClassVar[MotorMode] # value = <MotorMode.AutoZeroMode: 55>
     ForceMode: typing.ClassVar[MotorMode]  # value = <MotorMode.ForceMode: 2>
     HapticMode: typing.ClassVar[MotorMode]  # value = <MotorMode.HapticMode: 4>
     KinematicMode: typing.ClassVar[MotorMode]  # value = <MotorMode.KinematicMode: 5>
     PositionMode: typing.ClassVar[MotorMode]  # value = <MotorMode.PositionMode: 3>
     SleepMode: typing.ClassVar[MotorMode]  # value = <MotorMode.SleepMode: 1>
-    __members__: typing.ClassVar[
-        dict[str, MotorMode]
-    ]  # value = {'SleepMode': <MotorMode.SleepMode: 1>, 'ForceMode': <MotorMode.ForceMode: 2>, 'PositionMode': <MotorMode.PositionMode: 3>, 'HapticMode': <MotorMode.HapticMode: 4>, 'KinematicMode': <MotorMode.KinematicMode: 5>}
+
+    __members__: typing.ClassVar[dict[str, MotorMode]]  # value = {'SleepMode': <MotorMode.SleepMode: 1>, 'ForceMode': <MotorMode.ForceMode: 2>, 'PositionMode': <MotorMode.PositionMode: 3>, 'HapticMode': <MotorMode.HapticMode: 4>, 'KinematicMode': <MotorMode.KinematicMode: 5>, <MotorMode.AutoZeroMode: 55>}
     @staticmethod
     def _pybind11_conduit_v1_(*args, **kwargs): ...
     def __eq__(self, other: typing.Any) -> bool: ...
