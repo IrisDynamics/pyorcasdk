@@ -21,6 +21,7 @@ PYBIND11_MODULE(_pyorcasdk, m)
         .def_readwrite("errors", &orcaSDK::StreamData::errors);
 
      py::enum_<orcaSDK::MotorMode>(m, "MotorMode")
+        .value("AutoZeroMode", orcaSDK::AutoZeroMode)
         .value("SleepMode", orcaSDK::SleepMode)
         .value("ForceMode", orcaSDK::ForceMode)
         .value("PositionMode", orcaSDK::PositionMode)
