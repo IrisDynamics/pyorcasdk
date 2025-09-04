@@ -198,7 +198,7 @@ class Actuator:
         """
         ...
 
-    def get_serial_number(self) -> ...:
+    def get_serial_number(self) -> OrcaResultUInt16:
         """Returns the actuator's serial number.
 
         Returns:
