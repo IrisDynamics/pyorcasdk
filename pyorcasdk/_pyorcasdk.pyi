@@ -1,5 +1,5 @@
 """
-Python binding for the C++ orcaSDK
+Python bindings for the C++ orcaSDK
 """
 
 from __future__ import annotations
