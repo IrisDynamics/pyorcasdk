@@ -16,8 +16,7 @@ include(FetchContent)
 
 FetchContent_Declare(
   orcaSDK
-  GIT_REPOSITORY https://github.com/IrisDynamics/orcaSDK.git
-  GIT_TAG main
+  SOURCE_DIR "${PROJECT_SOURCE_DIR}/extern/orcaSDK"
 )
 
 FetchContent_MakeAvailable(orcaSDK)
