@@ -152,13 +152,19 @@ PYBIND11_MODULE(_pyorcasdk, m)
         .def("write_wide_register_blocking", &orcaSDK::Actuator::write_wide_register_blocking,
              py::arg("reg_address"), py::arg("write_data"), py::arg("priority") = orcaSDK::MessagePriority::important)
 
-        .def("write_multiple_registers_blocking", &orcaSDK::Actuator::write_multiple_registers_blocking,
-             py::arg("reg_start_address"), py::arg("num_registers"), py::arg("write_data"), py::arg("priority") = orcaSDK::MessagePriority::important)
+        .def("write_multiple_registers_blocking", 
+             py::overload_cast<uint16_t, std::vector<uint16_t>, orcaSDK::MessagePriority>(
+               &orcaSDK::Actuator::write_multiple_registers_blocking
+             ),
+             py::arg("reg_start_address"), py::arg("write_data"), py::arg("priority") = orcaSDK::MessagePriority::important)
 
-        .def("read_write_multiple_registers_blocking", &orcaSDK::Actuator::read_write_multiple_registers_blocking,
+        .def("read_write_multiple_registers_blocking", 
+             py::overload_cast<uint16_t, uint8_t, uint16_t, std::vector<uint16_t>, orcaSDK::MessagePriority>(
+               &orcaSDK::Actuator::read_write_multiple_registers_blocking
+             ),
              py::arg("read_starting_address"), py::arg("read_num_registers"),
-             py::arg("write_starting_address"), py::arg("write_num_registers"),
-             py::arg("write_data"), py::arg("priority") = orcaSDK::MessagePriority::important)
+             py::arg("write_starting_address"), py::arg("write_data"), 
+             py::arg("priority") = orcaSDK::MessagePriority::important)
 
         .def("begin_serial_logging", py::overload_cast<const std::string&>(&orcaSDK::Actuator::begin_serial_logging),
              py::arg("log_name"))
