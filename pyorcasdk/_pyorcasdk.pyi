@@ -43,8 +43,8 @@ __all__ = [
 class Actuator:
     @staticmethod
     def _pybind11_conduit_v1_(*args, **kwargs): ...
-    @typing.overload
-    def __init__(self, name: str, modbus_server_address: int = 1) -> None:
+    
+    def __init__(self, name: str = "", modbus_server_address: int = 1) -> None:
         """Constructs an actuator object.
 
         Args:
@@ -53,41 +53,11 @@ class Actuator:
         """
         ...
 
-    @typing.overload
-    def __init__(
-        self,
-        serial_interface: ...,
-        clock: ...,
-        name: str,
-        modbus_server_address: int = 1,
-    ) -> None:
-        """Constructs an actuator object when custom serial communication and clock implementations are necessary.
-        This constructor is suitable for testing or for use on platforms that are not yet supported.
-
-        Args:
-            serial_interface: An custom implementation of the SerialInterface class.
-            clock: An custom implementation of the Clock class with custom behaviour.
-            name (str): The name of the actuator, also available through the public member variable Actuator.name.
-            modbus_server_address (int, optional): The modbus server address. Defaults to 1.
-        """
-        ...
-
-    @typing.overload
     def begin_serial_logging(self, log_name: str) -> OrcaError:
         """Begins logging serial communication to a file, between this application and the motor.
 
         Args:
             log_name (str): The name of the file to be written to. Assumes relative path of the built executable file.
-        """
-        ...
-
-    @typing.overload
-    def begin_serial_logging(self, log_name: str, log: ...) -> OrcaError:
-        """Begins logging to a custom log interface.
-
-        Args:
-            log_name (str): The name of the file to be written to. Assumes relative path to the location of the built executable file.
-            log: A pointer to a custom implementation of the LogInterface. Used for custom logging behaviour.
         """
         ...
 
@@ -100,7 +70,7 @@ class Actuator:
         ...
 
     def disable_stream(self) -> None:
-        """Disables communication with server and transitions to disconnecting state, disabling the transceiver hardware."""
+        """Disables command streaming with the ORCA. See enable_stream()"""
         ...
 
     def enable_haptic_effects(self, effects: int) -> OrcaError:
@@ -198,7 +168,7 @@ class Actuator:
         """
         ...
 
-    def get_serial_number(self) -> ...:
+    def get_serial_number(self) -> OrcaResultInt32:
         """Returns the actuator's serial number.
 
         Returns:
@@ -542,6 +512,30 @@ class Actuator:
             priority (MessagePriority): Whether the message is high-priority - indicated with a 0, or not_important - indicated with a 1.
         """
         ...
+
+    def write_multiple_registers_blocking(
+        self, reg_start_address: int, write_data: list[int], priority: MessagePriority = ...
+    ) -> OrcaError:
+        """Writes a series of registers to the motor.
+
+        Args:
+            reg_start_address (int): The starting register address.
+            write_data (list[int]): A list containing all the values, in order, to write to the motor.
+            priority (enum): Whether the message is high-priority, indicated with a 0, or not_important, indicated with a 1.
+        """
+
+    def read_write_multiple_registers_blocking(
+        self, read_starting_address: int, read_num_registers: int, write_starting_address: int, write_data: list[int], priority: MessagePriority = ...
+    ) -> OrcaResultList:
+        """Simulataneously reads a set of registers from the device while writing to a set of registers.
+
+        Args:
+            read_starting_address (int): The starting address to read from.
+            read_num_registers (int): The number of registers to read.
+            write_starting_address (int): The starting address to write to.
+            write_data (list[int]): A list containing all the values, in order, to write to the motor.
+            priority (enum): Whether the message is high-priority, indicated with a 0, or not_important, indicated with a 1.
+        """
 
     def zero_position(self) -> OrcaError:
         """Sets the motor's zero position to its currently sensed position."""
