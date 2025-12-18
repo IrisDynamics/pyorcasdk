@@ -5,3 +5,6 @@
 [submodule "orcaSDK"]
 	path = extern/orcaSDK
 	url = https://github.com/IrisDynamics/orcaSDK.git
+[submodule "extern/orca-api"]
+	path = extern/orca-api
+	url = https://github.com/IrisDynamics/orca-api.git
