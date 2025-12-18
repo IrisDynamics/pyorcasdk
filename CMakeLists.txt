@@ -40,4 +40,6 @@ set_target_properties(_pyorcasdk PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/_pyorcasdk"
 )
 
+install(FILES ${PROJECT_SOURCE_DIR}/extern/orca-api/python/orca_registers.py DESTINATION ${SKBUILD_PROJECT_NAME})
+
 install(TARGETS _pyorcasdk DESTINATION ${SKBUILD_PROJECT_NAME})
