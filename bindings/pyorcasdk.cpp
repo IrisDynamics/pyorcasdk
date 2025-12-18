@@ -96,11 +96,11 @@ PYBIND11_MODULE(_pyorcasdk, m)
         .export_values();
     
     py::class_<orcaSDK::Actuator>(m, "Actuator")
-        .def(py::init<const char*, uint8_t>(), py::arg("name"), py::arg("modbus_server_address") = 1)
+        .def(py::init<const char*, uint8_t>(), py::arg("name") = "", py::arg("modbus_server_address") = 1)
 
         .def(py::init<std::shared_ptr<orcaSDK::SerialInterface>, std::shared_ptr<orcaSDK::Clock>, const char*, uint8_t>(),
 
-             py::arg("serial_interface"), py::arg("clock"), py::arg("name"), py::arg("modbus_server_address") = 1)
+             py::arg("serial_interface"), py::arg("clock"), py::arg("name") = "", py::arg("modbus_server_address") = 1)
 
       .def("open_serial_port", 
             // Integer port version
