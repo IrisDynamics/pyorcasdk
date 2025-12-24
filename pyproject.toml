@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "pyorcasdk"
-version = "0.2.0"
+version = "1.1.0"
 readme = "README.md"
 license = {file = 'LICENSE'}
 description = "Python bindings for the C++ orcaSDK library"
