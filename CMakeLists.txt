@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17...3.27)
+cmake_minimum_required(VERSION 3.28...4.0)
 
 # Scikit-build-core sets these values for you, or you can just hard-code the
 # name and version.
@@ -26,10 +26,16 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
     set_target_properties(orcaSDK_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
 endif()
 
-add_subdirectory(extern/pybind11 pybind11)
+find_package(Python REQUIRED COMPONENTS Interpreter Development.Module)
+
+FetchContent_Declare(
+  pybind11
+  SOURCE_DIR "${PROJECT_SOURCE_DIR}/extern/pybind11"
+)
+
+FetchContent_MakeAvailable(pybind11)
 
 pybind11_add_module(_pyorcasdk
-    SHARED
     bindings/pyorcasdk.cpp
 ) 
 
