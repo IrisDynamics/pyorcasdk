@@ -13,6 +13,9 @@ authors = [
 ]
 requires-python = ">=3.8"
 
+[project.urls]
+source = "https://github.com/IrisDynamics/pyorcasdk"
+
 [tool.scikit-build]
 wheel.expand-macos-universal-tags = true
 cmake.build-type = "Release"

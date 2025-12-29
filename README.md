@@ -6,7 +6,7 @@ pyorcasdk is a Python package designed to allow for easy software interaction wi
 
 ## Prerequisites
 
-- Python 3.8 or greater
+- Python version 3.8 to 3.14t
 - pip
 - A Windows or Linux device
 
