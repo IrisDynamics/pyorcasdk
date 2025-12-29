@@ -21,11 +21,6 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(orcaSDK)
 
-if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    add_compile_options(-fPIC)
-    set_target_properties(orcaSDK_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
-endif()
-
 find_package(Python REQUIRED COMPONENTS Interpreter Development.Module)
 
 FetchContent_Declare(
