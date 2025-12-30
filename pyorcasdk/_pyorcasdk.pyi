@@ -401,7 +401,7 @@ class Actuator:
         :param int center: The center of the spring effect.
         :param int dead_zone: The radius of the dead zone for the spring. For any position within the radius of the dead zone from the spring center, no spring force will be applied.
         :param int saturation: The maximum force that can be applied by the spring.
-        :param SpringCoupling coupling: The direction from the center where the spring force applies.
+        :param SpringCoupling coupling: The direction from the center where the spring force applies. Defaults to SpringCoupling.both
         """
         ...
 
