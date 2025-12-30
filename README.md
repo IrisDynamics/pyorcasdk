@@ -22,7 +22,7 @@ pip install pyorcasdk
 
 ## Documentation
 
-This package is currently in beta, and doesn't yet have complete Python documentation. Despite this, there are learning resources available.
+Documentation for this package can be found in a .zip file attached in the Releases section of our pyorcasdk [Github page](https://github.com/IrisDynamics/pyorcasdk). It can be directly downloaded via the documentation link of our PyPI page.
 
 ### Examples
 
@@ -31,7 +31,3 @@ Our [tutorial repo](https://github.com/IrisDynamics/orcaSDK_tutorials) contains 
 ### ORCA Documentation
 
 Our [downloads page](https://irisdynamics.com/downloads) contains multiple files which are useful references for handling the hardware setup for your ORCA motor. The [ORCA Series Reference Manual](https://irisdynamics.com/hubfs/Website/Downloads/Orca/Approved/RM220115_Orca_Series_Reference_Manual.pdf) goes into great detail on all features available in the motor and how the features can be accessed.
-
-### orcaSDK Documentation
-
-Although it uses C++ syntax, there is [complete documentation for orcaSDK](https://github.com/IrisDynamics/orcaSDK/releases/latest). Because this package links directly to our C++ library, nearly all function names and types are identical across the two packages. The documentation for the C++ library might be useful if you need additional information.
