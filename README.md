@@ -18,6 +18,8 @@ To install the package, execute this command into your command-line interface:
 pip install pyorcasdk
 ```
 
+> pyorcasdk depends on C++ runtime shared libraries. On Windows it is possible to install pyorcasdk without these shared libraries. If you encounter the error `ImportError: DLL load failed while importing... ` on Windows, then please install the latest [Microsoft Visual C++ Redistributables](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
+
 ## Documentation
 
 This package is currently in beta, and doesn't yet have complete Python documentation. Despite this, there are learning resources available.
