@@ -94,6 +94,12 @@ PYBIND11_MODULE(_pyorcasdk, m)
         .value("important", orcaSDK::MessagePriority::important)
         .value("not_important", orcaSDK::MessagePriority::not_important)
         .export_values();
+
+     py::enum_<orcaSDK::OrcaStream::StreamType>(m, "StreamType")
+        .value("Command", orcaSDK::OrcaStream::StreamType::Command)
+        .value("Write", orcaSDK::OrcaStream::StreamType::Write)
+        .value("Read", orcaSDK::OrcaStream::StreamType::Read)
+        .export_values();
     
     py::class_<orcaSDK::Actuator>(m, "Actuator")
         .def(py::init<const char*, uint8_t>(), py::arg("name") = "", py::arg("modbus_server_address") = 1)
@@ -174,7 +180,7 @@ PYBIND11_MODULE(_pyorcasdk, m)
 
         .def("run", &orcaSDK::Actuator::run)
 
-        .def("enable_stream", &orcaSDK::Actuator::enable_stream)
+        .def("enable_stream", &orcaSDK::Actuator::enable_stream,py::arg("streamtype") = orcaSDK::OrcaStream::StreamType::Command)
 
         .def("disable_stream", &orcaSDK::Actuator::disable_stream)
 
@@ -183,6 +189,8 @@ PYBIND11_MODULE(_pyorcasdk, m)
         .def("set_streamed_position_um", &orcaSDK::Actuator::set_streamed_position_um, py::arg("position"))
 
         .def("update_haptic_stream_effects", &orcaSDK::Actuator::update_haptic_stream_effects, py::arg("effects"))
+
+         .def("set_streamed_write", &orcaSDK::Actuator::set_streamed_write, py::arg("addr"), py::arg("value"), py::arg("width"))
 
         .def("get_power_W", &orcaSDK::Actuator::get_power_W)
 
