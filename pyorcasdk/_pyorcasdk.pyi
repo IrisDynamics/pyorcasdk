@@ -437,7 +437,7 @@ class Actuator:
 
     def tune_position_controller(
         self, pgain: int, igain: int, dvgain: int, sat: int, dgain: int = 0
-    ) -> None:
+    ) -> OrcaError:
         """Sets the PID controller tuning values for the motor's position controller.
 
         Note: The position controller's PID tuning affects the behaviour of the motor in position and kinematic control modes.
@@ -505,6 +505,15 @@ class Actuator:
     def zero_position(self) -> OrcaError:
         """Sets the motor's zero position to its currently sensed position."""
         ...
+
+    def set_response_timeout(self, timeout_us: int) -> None:
+        """Changes how long the client will wait after sending a message before considering the response timed out.
+        
+            Note: For most applications, the default timeout should be sufficient. This function should be most applicable to users with 
+            some combination of default serial port latency, low baud rates, and long message lengths (E.g. Long reads, streaming)
+
+            :param int timeout_us: The timeout duration, in microseconds.
+        """
 
     @property
     def name(self) -> str: ...

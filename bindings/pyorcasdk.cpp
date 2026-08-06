@@ -236,6 +236,8 @@ PYBIND11_MODULE(_pyorcasdk, m)
 
         .def("get_revision_number", &orcaSDK::Actuator::get_revision_number)
 
+        .def("set_response_timeout", &orcaSDK::Actuator::set_response_timeout)
+
         .def_readonly("name", &orcaSDK::Actuator::name);
 
 }
