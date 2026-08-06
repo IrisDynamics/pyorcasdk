@@ -216,7 +216,7 @@ PYBIND11_MODULE(_pyorcasdk, m)
 
         .def("enable_haptic_effects", &orcaSDK::Actuator::enable_haptic_effects, py::arg("effects"))
 
-        .def("set_spring_effect", &orcaSDK::Actuator::set_spring_effect, py::arg("spring_id"), py::arg("gain"), py::arg("center"), py::arg("dead_zone") = 0, py::arg("saturation ") = 0, py::arg("coupling") = orcaSDK::Actuator::SpringCoupling::both)
+        .def("set_spring_effect", &orcaSDK::Actuator::set_spring_effect, py::arg("spring_id"), py::arg("gain"), py::arg("center"), py::arg("dead_zone") = 0, py::arg("saturation") = 0, py::arg("coupling") = orcaSDK::Actuator::SpringCoupling::both)
 
         .def("set_osc_effect", &orcaSDK::Actuator::set_osc_effect, py::arg("osc_id"), py::arg("amplitude"), py::arg("frequency_dhz"), py::arg("duty"), py::arg("type "))
 
