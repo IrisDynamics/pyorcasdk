@@ -489,6 +489,7 @@ class Actuator:
             :param list[int] write_data: A list containing all the values, in order, to write to the motor.
             :param MessagePriority priority: Whether the message is high-priority, indicated with a 0, or not_important, indicated with a 1.
         """
+        ...
 
     def read_write_multiple_registers_blocking(
         self, read_starting_address: int, read_num_registers: int, write_starting_address: int, write_data: list[int], priority: MessagePriority = ...
@@ -501,6 +502,7 @@ class Actuator:
             :param list[int] write_data: A list containing all the values, in order, to write to the motor.
             :param MessagePriority priority: Whether the message is high-priority, indicated with a 0, or not_important, indicated with a 1.
         """
+        ...
 
     def zero_position(self) -> OrcaError:
         """Sets the motor's zero position to its currently sensed position."""
@@ -514,6 +516,7 @@ class Actuator:
 
             :param int timeout_us: The timeout duration, in microseconds.
         """
+        ...
 
     @property
     def name(self) -> str: ...
