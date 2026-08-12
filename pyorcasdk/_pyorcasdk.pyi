@@ -193,23 +193,20 @@ class Actuator:
 
     @typing.overload
     def open_serial_port(
-        self, port_number: int, baud_rate: int = 19200, interframe_delay: int = 2000
+        self, port: int, baud_rate: int = 19200, interframe_delay: int = 2000
     ) -> OrcaError:
-        """Opens serial port using port number.
-
-        :param int port_number: The port number of the RS422 cable that connects to the desired device.
-        :param int baud_rate: The speed of data transmission between the connected device and the motor, defaults to 19200 bps.
-        :param int interframe_delay: The time gap between sending consecutive frames in a sequence of data while streaming, defaults to 2000 microseconds.
-        """
         ...
 
     @typing.overload
     def open_serial_port(
-        self, port_path: str, baud_rate: int = 19200, interframe_delay: int = 2000
+        self, port: str, baud_rate: int = 19200, interframe_delay: int = 2000
     ) -> OrcaError:
+        ...
+
+    def open_serial_port(self, port: int | str, baud_rate: int = 19200, interframe_delay: int = 2000) -> OrcaError:
         """Opens serial port using port path.
 
-        :param str port_path: The file path of the RS422 cable that connects to the desired device.
+        :param str | int port: The identifier for the RS422 cable that connects to the desired device. Can be a file path to the serial port or the serial port number.
         :param int baud_rate: The speed of data transmission between the connected device and the motor, defaults to 19200 bps.
         :param int interframe_delay: The time gap between sending consecutive frames in a sequence of data while streaming, defaults to 2000 microseconds.
         """

@@ -107,7 +107,7 @@ PYBIND11_MODULE(_pyorcasdk, m)
             py::overload_cast<int, int, int>(
                 &orcaSDK::Actuator::open_serial_port
             ),
-            py::arg("port_number"),
+            py::arg("port"),
             py::arg("baud_rate") = orcaSDK::Constants::kDefaultBaudRate,
             py::arg("interframe_delay") = orcaSDK::Constants::kDefaultInterframeDelay_uS,
             "Open serial port using port number"
@@ -117,7 +117,7 @@ PYBIND11_MODULE(_pyorcasdk, m)
             py::overload_cast<std::string, int, int>(
                 &orcaSDK::Actuator::open_serial_port
             ),
-            py::arg("port_path"),
+            py::arg("port"),
             py::arg("baud_rate") = orcaSDK::Constants::kDefaultBaudRate,
             py::arg("interframe_delay") = orcaSDK::Constants::kDefaultInterframeDelay_uS,
             "Open serial port using port path"
