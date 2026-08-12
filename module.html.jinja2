@@ -1,0 +1,46 @@
+{% extends "default/module.html.jinja2" %}
+{% block title %}pyorcasdk API documentation{% endblock %}
+
+{% block module_info %}
+	<section class="module-info">
+		{% block edit_button %}
+			{% if edit_url %}
+				{% if "github.com" in edit_url %}
+					{% set edit_text = "Edit on GitHub" %}
+				{% elif "gitlab" in edit_url %}
+					{% set edit_text = "Edit on GitLab" %}
+				{% else %}
+					{% set edit_text = "Edit Source" %}
+				{% endif %}
+				<a class="pdoc-button git-button" href="{{ edit_url }}">{{ edit_text }}</a>
+			{% endif %}
+		{% endblock %}
+		<h1 class="modulename">pyorcasdk</h1>
+		{{ docstring(module) }}
+		{{ view_source_state(module) }}
+		{{ view_source_button(module) }}
+		{{ view_source_code(module) }}
+	</section>
+{% endblock %}
+
+{% block style_theme %}
+	<style>
+	/*! theme.css */:root{--pdoc-background:#fff;}.pdoc{--text:#212529;--muted:#6c757d;--link:#3660a5;--link-hover:#1659c5;--code:#f8f8f8;--active:#fff598;--accent:#eee;--accent2:#c1c1c1;--nav-hover:rgba(255, 255, 255, 0.5);--name:#002C42;--def:#F15E24;--annotation:#F4911E;}
+	</style>
+{% endblock %}
+
+{% block style %}
+	{{ super() }}
+	<style>
+		body {
+			font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+		}
+	</style>
+{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+{% endblock %}
