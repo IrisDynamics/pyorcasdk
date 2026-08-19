@@ -15,8 +15,8 @@ requires-python = ">=3.8"
 
 [project.urls]
 source = "https://github.com/IrisDynamics/pyorcasdk"
-documentation = "https://github.com/IrisDynamics/pyorcasdk/releases/download/v1.1.0/pyorcasdk-docs.zip"
-tutorials = "https://github.com/IrisDynamics/orcaSDK_tutorials"
+documentation = "https://docs.irisdynamics.com/sdk/pyorcasdk/"
+tutorials = "https://docs.irisdynamics.com/sdk/tutorials/"
 
 [tool.scikit-build]
 wheel.expand-macos-universal-tags = true
