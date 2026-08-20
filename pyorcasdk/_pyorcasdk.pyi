@@ -204,7 +204,7 @@ class Actuator:
         ...
 
     def open_serial_port(self, port: int | str, baud_rate: int = 19200, interframe_delay: int = 2000) -> OrcaError:
-        """Opens serial port using port path.
+        """Opens the serial port of a motor and configures connection parameters.
 
         :param str | int port: The identifier for the RS422 cable that connects to the desired device. Can be a file path to the serial port or the serial port number.
         :param int baud_rate: The speed of data transmission between the connected device and the motor, defaults to 19200 bps.
